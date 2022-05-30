@@ -58,3 +58,12 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+
+==============================USER REGISTER===========
+
+NOTE:
+
+1. we need to register the user first using /addUser API with no auth. 
+2. only after registration the user will be authenticated to access the rest of the API's
+3. once we Register user , to access /getUsers API we need to call /token api fetch the token and then pass it as a bearer token to /getUsers API and also all other API's. 
+
