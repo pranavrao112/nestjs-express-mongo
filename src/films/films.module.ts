@@ -13,7 +13,7 @@ require('dotenv').config();
       schema:filmsSchema,
       collection:'Films'
     }]),
-    MongooseModule.forRoot(process.env.MONGO_URI_CLOUD)
+    MongooseModule.forRoot(process.env.MONGO_URI_CLOUD || 'mongodb+srv://pranavrao:Pranav112@cluster0.b3tmz.mongodb.net/?retryWrites=true&w=majority')
   ],
   controllers: [FilmController],
   providers: [FilmService],

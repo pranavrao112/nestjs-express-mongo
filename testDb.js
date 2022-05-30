@@ -1,6 +1,6 @@
 // Used for testing DB connection
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://pranavrao:Pranav112@cluster0.b3tmz.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb://127.0.0.1:27017/NESTJS_MONGO_DEMO')
 .then( () => console.log('DB Connected!'))
 .catch( (err) => console.log(err));
