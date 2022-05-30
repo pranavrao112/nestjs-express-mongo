@@ -24,9 +24,9 @@ require('dotenv').config();
     MongooseModule.forRoot(process.env.MONGO_URI_CLOUD || 'mongodb+srv://pranavrao:Pranav112@cluster0.b3tmz.mongodb.net/?retryWrites=true&w=majority'),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-        secretOrPrivateKey: process.env.SECRET,
+        secretOrPrivateKey: process.env.SECRET || 'xyzxyzxyz',
         signOptions: {
-            expiresIn: process.env.JWT_EXPIRY,
+            expiresIn: process.env.JWT_EXPIRY || '24h',
         },
     }),
     UsersModule,

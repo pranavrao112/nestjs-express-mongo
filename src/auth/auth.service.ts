@@ -11,7 +11,7 @@ export class AuthService {
   async createToken(user: JwtPayload) {
     const accessToken = this.jwtService.sign(user);
     return {
-      expiresIn: process.env.JWT_EXPIRY,
+      expiresIn: process.env.JWT_EXPIRY || '24h',
       accessToken,
     };
   }

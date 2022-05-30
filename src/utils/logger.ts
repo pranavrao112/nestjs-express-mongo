@@ -25,7 +25,7 @@ export class Logger {
                 transports: [
                     new winston.transports.Console({
                         format: winston.format.simple(),
-                        level: process.env.LOG_LEVEL
+                        level: process.env.LOG_LEVEL || 'info'
                     })
                 ]
             });
