@@ -21,7 +21,7 @@ require('dotenv').config();
       schema:filmsSchema,
       collection:'Films'
     }]),
-    MongooseModule.forRoot("mongodb://127.0.0.1:27017/NESTJS_MONGO_DEMO"),
+    MongooseModule.forRoot(process.env.MONGO_URI_CLOUD),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
         secretOrPrivateKey: process.env.SECRET,

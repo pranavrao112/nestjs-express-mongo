@@ -2,7 +2,7 @@
   "name": "films-review",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Pranav Rao",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -44,7 +44,7 @@
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
-    "@nestjs/testing": "^8.0.0",
+    "@nestjs/testing": "^8.4.5",
     "@types/express": "^4.17.13",
     "@types/jest": "27.5.0",
     "@types/node": "^16.0.0",

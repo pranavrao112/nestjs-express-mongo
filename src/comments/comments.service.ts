@@ -1,5 +1,4 @@
-import { JwtPayload } from '../auth/jwt-payload.interface';
-import { Injectable, Inject, BadRequestException } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { Comments } from '../models/comments.model';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';

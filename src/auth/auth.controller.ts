@@ -55,10 +55,4 @@ export class AuthController {
             return err;
           }
     }
-
-    @Get('data')
-    @UseGuards(AuthGuard())
-    findAll() {
-        // This route is restricted by AuthGuard
-    }
 }

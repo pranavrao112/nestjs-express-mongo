@@ -1,9 +1,10 @@
 import * as mongoose from 'mongoose';
+require('dotenv').config();
 
 export const databaseProviders = [
   {
     provide: 'DbConnectionToken',
     useFactory: async (): Promise<typeof mongoose> =>
-      await mongoose.connect('mongodb://127.0.0.1:27017/NESTJS_MONGO_DEMO'),
+      await mongoose.connect(process.env.MONGO_URI_CLOUD),
   },
 ];

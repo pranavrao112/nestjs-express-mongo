@@ -9,7 +9,6 @@ export class AuthService {
   constructor(private readonly jwtService: JwtService, private readonly usersService: UsersService) { }
 
   async createToken(user: JwtPayload) {
-    // const user: JwtPayload = { email: 'test@email.com' };
     const accessToken = this.jwtService.sign(user);
     return {
       expiresIn: process.env.JWT_EXPIRY,
@@ -18,8 +17,8 @@ export class AuthService {
   }
 
   async validateUser(payload: JwtPayload): Promise<any> {
-    // Validate if token passed along with HTTP request
-    // is associated with any registered account in the database
+    /* Validate if token passed along with HTTP request
+     is associated with any registered account in the database */
     return await this.usersService.findOne(payload.username);
   }
 
