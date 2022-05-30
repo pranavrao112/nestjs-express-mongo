@@ -12,7 +12,7 @@ export class FilmController {
   constructor(private readonly filmService: FilmService) { }
 
   @Post('addFilm')
-  //@UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   async AddFilms(@Body() input: any) {
       logger.info('Incoming payload on films controller : ',input);
       try{
@@ -24,7 +24,7 @@ export class FilmController {
   }
 
   @Get('getFilms')
-  //@UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   async GetAllFilms() {
     try {
       return await this.filmService.getAllFilms();
