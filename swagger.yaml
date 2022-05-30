@@ -1,0 +1,325 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a sample project showcase for film API."
+  version: "1.0.0"
+  title: "Film Review API Doc"
+  contact:
+    email: "pranav@filmapi.com"
+host: "filmreview-api.herokuapp.com"
+tags:
+- name: "Film Reviw API"
+  description: "Documentation of film review api"
+schemes:
+- "https"
+- "http"
+paths:
+  /film/addFilm:
+    post:
+      tags:
+      - "AddFilm"
+      summary: "Add a new film data"
+      description: ""
+      operationId: "addFilm"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Add a new film data to the base"
+        required: true
+        schema:
+          $ref: "#/definitions/Film"
+      responses:
+        "200":
+          description: "A new resource is created"
+        "401":
+          description: "Unauthorized"
+        "405":
+          description: "Invalid input"
+        "500":
+          description: "Internal server error"
+      x-swagger-router-controller: "AddFilm"
+  /film/getFilms:
+    get:
+      tags:
+      - "GetFilms"
+      summary: "Get films"
+      description: ""
+      operationId: "getFilm"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "A new resource is created"
+        "401":
+          description: "Unauthorized"
+        "500":
+          description: "Internal server error"
+      x-swagger-router-controller: "GetFilms"
+  /user/addUser:
+    post:
+      tags:
+      - "AddUser"
+      summary: "Add a new user data"
+      description: ""
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Add a new user to the base"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "A new resource is created"
+        "401":
+          description: "Unauthorized"
+        "409":
+          description: "Username already taken"
+        "405":
+          description: "Invalid input"
+        "500":
+          description: "Internal server error"
+      x-swagger-router-controller: "AddUser"
+  /user/getUsers:
+    get:
+      tags:
+      - "GetUsers"
+      summary: "Get Users"
+      description: ""
+      operationId: "getUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "A new resource is created"
+        "401":
+          description: "Unauthorized"
+        "500":
+          description: "Internal server error"
+      x-swagger-router-controller: "GetUsers"
+  /film/addComment:
+    post:
+      tags:
+      - "AddComment"
+      summary: "Add a new user comments"
+      description: ""
+      operationId: "addComments"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Add a new comment to the base"
+        required: true
+        schema:
+          $ref: "#/definitions/Comments"
+      responses:
+        "200":
+          description: "A new resource is created"
+        "401":
+          description: "Unauthorized"
+        "405":
+          description: "Invalid input"
+        "500":
+          description: "Internal server error"
+      x-swagger-router-controller: "AddComments"
+  /film/getComments:
+    get:
+      tags:
+      - "GetComments"
+      summary: "Get Comments"
+      description: ""
+      operationId: "getComments"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "A new resource is created"
+        "401":
+          description: "Unauthorized"
+        "500":
+          description: "Internal server error"
+      x-swagger-router-controller: "GetComments"
+  /user/token:
+    post:
+      tags:
+      - "ApiToken"
+      summary: "Get new access token"
+      description: ""
+      operationId: "apiToken"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Get api token"
+        required: true
+        schema:
+          $ref: "#/definitions/Token"
+      responses:
+        "200":
+          description: "A new resource is created"
+        "401":
+          description: "Unauthorized"
+        "405":
+          description: "Invalid input"
+        "500":
+          description: "Internal server error" 
+      x-swagger-router-controller: "token"
+  /user/login:
+    post:
+      tags:
+      - "Login"
+      summary: "User login"
+      description: ""
+      operationId: "login"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User login"
+        required: true
+        schema:
+          $ref: "#/definitions/Login"
+      responses:
+        "200":
+          description: "A new resource is created"
+        "401":
+          description: "Unauthorized"
+        "405":
+          description: "Invalid input"
+        "500":
+          description: "Internal server error"
+      x-swagger-router-controller: "login"
+securityDefinitions:
+  filmreview_auth:
+    type: "oauth2"
+    authorizationUrl: "http://filmreview-api.herokuapp.com/login"
+    flow: "implicit"
+    scopes:
+      write:review: "modify reviews in your account"
+      read:review: "read your reviews"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Film:
+    type: "object"
+    properties:
+      FilmId:
+        type: "string"
+      Name:
+        type: "string"
+      Description:
+        type: "string"
+      ReleaseDate:
+        type: "string"
+      Rating:
+        type: "number"
+      Review:
+        type: "string"
+      Country:
+        type: "string"
+      Genre:
+        type: "string"
+      Photo:
+        type: "string"
+      ReviewerId:
+        type: "string"
+      Timestamp:
+        type: "object"
+        properties: {}
+    example:
+      FilmId: "FilmId"
+      Description: "Description"
+      ReviewerId: "ReviewerId"
+      Rating: 0.80082819046101150206595775671303272247314453125
+      Country: "Country"
+      Photo: "Photo"
+      Review: "Review"
+      Genre: "Genre"
+      ReleaseDate: "ReleaseDate"
+      Timestamp: "{}"
+      Name: "Name"
+  User:
+    type: "object"
+    properties:
+      UserId:
+        type: "string"
+      Name:
+        type: "string"
+      Description:
+        type: "string"
+      IsReviewer:
+        type: "boolean"
+      Timestamp:
+        type: "object"
+        properties: {}
+    example:
+      Description: "Description"
+      UserId: "UserId"
+      IsReviewer: true
+      Timestamp: "{}"
+      Name: "Name"
+  Comments:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      FilmId:
+        type: "string"
+      Comment:
+        type: "string"
+      UserId:
+        type: "string"
+      Timestamp:
+        type: "object"
+        properties: {}
+    example:
+      Comment: "Comment"
+      FilmId: "FilmId"
+      UserId: "UserId"
+      id: "id"
+      Timestamp: "{}"
+  Token:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+  Login:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
