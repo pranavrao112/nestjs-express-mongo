@@ -38,7 +38,7 @@ export class UsersController {
     }
 
     @Post('addUser')
-    @UseGuards(AuthGuard('jwt'))
+   // @UseGuards(AuthGuard('jwt'))
     // Checking if user exists 
     async create(@Body() inputObj: any) {
         logger.info('Incoming payload on users controller : ',inputObj);
